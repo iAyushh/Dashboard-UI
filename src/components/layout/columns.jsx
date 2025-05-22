@@ -1,3 +1,16 @@
+import { ArrowUpDown, MoreHorizontal } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 export const columns = [
   {
     id: "select",
@@ -45,17 +58,32 @@ export const columns = [
   },
   {
     accessorKey: "words",
-    header: () => <div className="text-right">Words</div>,
+    header: () => <div className="text-right pr-7">Words</div>,
     cell: ({ row }) => {
       const words = parseFloat(row.getValue("words"));
-      return <div className="text-right font-medium">{words}</div>;
+      return <div className="text-right font-medium pr-8">{words}</div>;
     },
+  },
+  {
+    accessorKey: "createdOn",
+    header: "Created On",
+    cell: ({ row }) => (
+      <div className="text-sm text-muted-foreground">{row.getValue("createdOn")}</div>
+    ),
+  },
+  {
+    accessorKey: "publish",
+    header: "Publish",
+    cell: ({ row }) => (
+      <div className="text-sm font-medium text-green-700">{row.getValue("publish") ?? "—"}</div>
+    ),
   },
   {
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
       const article = row.original;
+
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

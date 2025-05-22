@@ -7,6 +7,7 @@ export const articles = [
     keyword: "league of legends [2240000]",
     words: 4875,
     createdOn: "20 hours ago",
+    publish: "Draft",
   },
   {
     id: "gen-2",
@@ -15,6 +16,7 @@ export const articles = [
     keyword: "league of legends [2240000]",
     words: 2837,
     createdOn: "1 day ago",
+    publish: "Draft",
   },
 
   // Published Articles
@@ -43,6 +45,7 @@ export const articles = [
     keyword: "league of legends [2240000]",
     words: 4242,
     createdOn: "Scheduled for May 25",
+    publish: "Draft",
   },
 
   // Archived Articles
@@ -53,5 +56,6 @@ export const articles = [
     keyword: "league of legends meta [50000]",
     words: 1984,
     createdOn: "Archived on Mar 15",
+    
   },
 ];
