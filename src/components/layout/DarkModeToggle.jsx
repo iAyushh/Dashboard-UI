@@ -1,28 +1,35 @@
-import { Button } from "../ui/button";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Sun, Moon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-export default function DarkModeToggle() {
-  const [isDark, setIsDark] = useState(
-    () => localStorage.theme === "dark" || false
+const DarkModeToggle = () => {
+  const [isDark, setIsDark] = useState(() =>
+    typeof window !== "undefined"
+      ? document.documentElement.classList.contains("dark")
+      : false
   );
 
   useEffect(() => {
-    const root = window.document.documentElement;
     if (isDark) {
-      root.classList.add("dark");
-      localStorage.setItem("theme", "dark");
+      document.documentElement.classList.add("dark");
     } else {
-      root.classList.remove("dark");
-      localStorage.setItem("theme", "light");
+      document.documentElement.classList.remove("dark");
     }
   }, [isDark]);
 
   return (
     <Button
-      className="px-4 py-2 text-sm border rounded dark:bg-gray-800 dark:text-white"
       onClick={() => setIsDark(!isDark)}
+      className="flex items-center gap-2"
+      variant="outline"
     >
-      {isDark ? "☀️ " : "🌙 "}
+      {isDark ? (
+        <Sun className="h-5 w-5 text-yellow-400" />
+      ) : (
+        <Moon className="h-5 w-5 text-gray-900" />
+      )}
     </Button>
   );
-}
+};
+
+export default DarkModeToggle;
