@@ -27,7 +27,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { columns } from "./columns";
+import { columns } from "./Columns";
 
 function DataTable({ data }) {
   const [sorting, setSorting] = React.useState([]);

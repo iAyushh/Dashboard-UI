@@ -1,40 +1,39 @@
-import * as React from "react"
+import * as React from "react";
 import {
   AudioWaveform,
-  BookOpen,
-  Bot,
+  Building,
   Command,
-  Frame,
   GalleryVerticalEnd,
-  Map,
-  PieChart,
+  Link,
+  NewspaperIcon,
+  Scroll,
   Settings2,
-  SquareTerminal,
-} from "lucide-react"
+} from "lucide-react";
 
-import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
-import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
+import { NavMain } from "@/components/nav-main";
+import { NavProjects } from "@/components/nav-projects";
+import { NavUser } from "@/components/nav-user";
+import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
-// This is sample data.
+
+// Sample data.
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "Profile",
+    email: "ayush@gmail.com",
+    
   },
   teams: [
     {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
+      name: "abun",
+      logo: Building,
       plan: "Enterprise",
     },
     {
@@ -50,48 +49,55 @@ const data = {
   ],
   navMain: [
     {
-      title: "Playground",
+      title: "Articles",
       url: "#",
-      icon: SquareTerminal,
+      icon: Scroll,
       isActive: true,
       items: [
         {
-          title: "History",
+          title: "Create Article",
           url: "#",
         },
         {
-          title: "Starred",
+          title: "Generated Articles",
           url: "#",
         },
         {
-          title: "Settings",
+          title: "Keyword Projects",
+          url: "#",
+        },
+        {
+          title: "AI Keyword to Article",
+          url: "#",
+        },
+        {
+          title: "Steal Competitor Keyword",
+          url: "#",
+        },
+        {
+          title: "Import Keyword from GSC",
+          url: "#",
+        },
+        {
+          title: "Manual Keyword to Article",
+          url: "#",
+        },
+        {
+          title: "Bulk Keyword to Article",
           url: "#",
         },
       ],
     },
     {
-      title: "Models",
+      title: "Auto Blog",
       url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
+      icon: NewspaperIcon,
+      
     },
     {
-      title: "Documentation",
+      title: "Internal Links",
       url: "#",
-      icon: BookOpen,
+      icon: Link,
       items: [
         {
           title: "Introduction",
@@ -136,29 +142,13 @@ const data = {
     },
   ],
   projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
+   
   ],
-}
+};
 
-export function AppSidebar({
-  ...props
-}) {
+export function AppSidebar({ ...props }) {
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <Sidebar collapsible="icon" className="w-66"  {...props}>
       <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
