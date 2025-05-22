@@ -23,7 +23,7 @@ src/
 ├── components/
 │ ├── layout/
 │ │ ├── DataTable.jsx
-│ │ └── columns.jsx
+│ │ └── Columns.jsx
 │ ├── ui/ # ShadCN components
 │ └── app-sidebar.jsx
 ├── data/
