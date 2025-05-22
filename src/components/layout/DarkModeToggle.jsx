@@ -1,4 +1,4 @@
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { useEffect, useState } from "react";
 
 export default function DarkModeToggle() {
@@ -22,7 +22,7 @@ export default function DarkModeToggle() {
       className="px-4 py-2 text-sm border rounded dark:bg-gray-800 dark:text-white"
       onClick={() => setIsDark(!isDark)}
     >
-      {isDark ? "☀️ Light Mode" : "🌙 Dark Mode"}
+      {isDark ? "☀️ " : "🌙 "}
     </Button>
   );
 }

@@ -91,13 +91,13 @@ function DataTable({ data }) {
       </div>
 
       {/* Table */}
-      <div className="rounded-lg border border-gray-200 bg-white shadow-sm p-4">
+      <div className="rounded-lg border border-gray-200 bg-white shadow-sm p-4 dark:border-gray-700 dark:bg-gray-900">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <TableHead key={header.id}>
+                  <TableHead key={header.id} className="text-gray-700 dark:text-gray-300">
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -115,9 +115,10 @@ function DataTable({ data }) {
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
+                  className="hover:bg-gray-100 dark:hover:bg-gray-800 dark:data-[state=selected]:bg-gray-700"
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell key={cell.id} className="text-gray-900 dark:text-gray-100">
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()

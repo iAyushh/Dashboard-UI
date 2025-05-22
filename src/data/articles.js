@@ -16,8 +16,20 @@ export const articles = [
     keyword: "league of legends [2240000]",
     words: 2837,
     createdOn: "1 day ago",
-    publish: "Draft",
+    publish: "Draft"},
+
+    {
+    id: "gen-3",
+    category: "generated",
+    title: "How to Master Last Hitting in League of Legends",
+    keyword: "league of legends[2240000]",
+    words: 4242,
+    createdOn: "1 day ago",
+    publish: "Draft"
   },
+  
+  
+  
 
   // Published Articles
   {
