@@ -52,8 +52,7 @@ cd dashboard-ui
 npm install
 npm run dev
 🌐 Live Demo
-🔗 https://dashboard-ui-git-master-ayush-vermas-projects-41fd1a19.vercel.app/
-
+🔗 https:https://dashboard-ui-blush-zeta.vercel.app/
 MIT © Ayush Verma
 
 
