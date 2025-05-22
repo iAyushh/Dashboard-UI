@@ -32,40 +32,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const data = [
-  {
-    id: "m5gr84i9",
-    words: 3316,
-    title: "How to improve your skills in League of Legends",
-    keyword: "league of legends[2240000]",
-  },
-  {
-    id: "3u1reuv4",
-    words: 4242,
-    title: "How to Master Last Hitting in League of Legends",
-    keyword: "league of legends[2240000]",
-  },
-  {
-    id: "derv1ws0",
-    words: 2837,
-    title: "7 tips for Better Teamplay in League of Legends",
-    keyword: "league of legends[2240000]",
-  },
-  {
-    id: "5kma53ae",
-    words: 3274,
-    title: "Top Virtual Executive Assistant Services (2024)",
-    keyword: "virtual executive assistant[2900]",
-  },
-  {
-    id: "bhqecj4p",
-    words: 5241,
-    title: "Unlimited Graphic Design Solutions",
-    keyword: "unlimited graphic design services[390]",
-  },
-];
-
-const columns = [
+export const columns = [
   {
     id: "select",
     header: ({ table }) => (
@@ -115,7 +82,6 @@ const columns = [
     header: () => <div className="text-right">Words</div>,
     cell: ({ row }) => {
       const words = parseFloat(row.getValue("words"));
-
       return <div className="text-right font-medium">{words}</div>;
     },
   },
@@ -123,8 +89,7 @@ const columns = [
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const payment = row.original;
-
+      const article = row.original;
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -133,16 +98,16 @@ const columns = [
               <MoreHorizontal />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent enuContent align="end">
+          <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
+              onClick={() => navigator.clipboard.writeText(article.id)}
             >
-              Copy payment ID
+              Copy article ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
+            <DropdownMenuItem>View article</DropdownMenuItem>
+            <DropdownMenuItem>Export</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
@@ -150,7 +115,7 @@ const columns = [
   },
 ];
 
-function DataTable() {
+function DataTable({ data }) {
   const [sorting, setSorting] = React.useState([]);
   const [columnFilters, setColumnFilters] = React.useState([]);
   const [columnVisibility, setColumnVisibility] = React.useState({});
@@ -177,7 +142,16 @@ function DataTable() {
 
   return (
     <div className="w-full">
-      <div className="flex items-center py-4">
+      {/* Search + Column Toggle */}
+      <div className="flex items-center justify-between py-4">
+        <Input
+          placeholder="Search article title..."
+          value={table.getColumn("title")?.getFilterValue() ?? ""}
+          onChange={(e) =>
+            table.getColumn("title")?.setFilterValue(e.target.value)
+          }
+          className="max-w-sm"
+        />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
@@ -201,7 +175,9 @@ function DataTable() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="rounded-md border">
+
+      {/* Table */}
+      <div className="rounded-lg border border-gray-200 bg-white shadow-sm p-4">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -249,6 +225,8 @@ function DataTable() {
           </TableBody>
         </Table>
       </div>
+
+      {/* Pagination + Row Info */}
       <div className="flex items-center justify-end space-x-2 py-4">
         <div className="flex-1 text-sm text-muted-foreground">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
